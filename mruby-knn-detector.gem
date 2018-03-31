@@ -1,0 +1,6 @@
+name: mruby-knn-detector
+description: KNN class
+author: tsurubee
+website: https://github.com/tsurubee/mruby-knn-detector
+protocol: git
+repository: https://github.com/tsurubee/mruby-knn-detector.git
