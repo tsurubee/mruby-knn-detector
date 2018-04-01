@@ -16,7 +16,7 @@ class KNN
         distances << dist(windows[t], win)
       end
       distances.sort!
-      s = distances[-@k..-1].inject(0.0){|r,i| r+=i} / @k
+      s = distances[1..@k].inject(0.0){|r,i| r+=i} / @k
       scores << s
     end
     # Adjust the size of input/output array
