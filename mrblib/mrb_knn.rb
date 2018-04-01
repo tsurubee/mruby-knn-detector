@@ -1,7 +1,12 @@
 class KNN
 
-  def score(data, w, k)
-    windows = sliding_windows(data, w)
+  def initialize(w, k)
+    @w = w.to_i
+    @k = k.to_i
+  end
+
+  def score(data)
+    windows = sliding_windows(data)
     w_size  = windows.length
     scores  = []
 
@@ -11,18 +16,19 @@ class KNN
         distances << dist(windows[t], win)
       end
       distances.sort!
-      s = distances[-k..-1].inject(0.0){|r,i| r+=i} / k
+      s = distances[-@k..-1].inject(0.0){|r,i| r+=i} / @k
       scores << s
     end
-    return scores
+    # Adjust the size of input/output array
+    return Array.new(@w-1, 0) + scores
   end
 
-  def sliding_windows(data, w)
-    num     = data.length - w + 1
+  def sliding_windows(data)
+    num     = data.length - @w + 1
     windows = []
 
     num.times do |t|
-      windows << data[t, w]
+      windows << data[t, @w]
     end
     return windows
   end
