@@ -38,7 +38,7 @@ class KNN
     vec1.each_with_index do |v, i|
       sum += (v - vec2[i]) * (v - vec2[i])
     end
-    return Math.sqrt(sum)
+    Math.sqrt(sum)
   end
 
 end
