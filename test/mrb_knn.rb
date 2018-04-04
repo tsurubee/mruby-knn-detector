@@ -2,16 +2,22 @@
 ## KNN Test
 ##
 
-assert("KNN#hello") do
-  t = KNN.new "hello"
-  assert_equal("hello", t.hello)
+# KNN class
+assert("KNN#sliding_windows") do
+  knn = KNN.new(2, 1)
+  w = knn.sliding_windows([1, 2, 1, 2, 1, 2])
+  assert_equal(5, w.length)
+  assert_equal([1, 2], w[0])
 end
 
-assert("KNN#bye") do
-  t = KNN.new "hello"
-  assert_equal("hello bye", t.bye)
+assert("KNN#dist") do
+  knn = KNN.new(2, 1)
+  assert_equal(1, knn.dist([1, 1, 1], [1, 1, 2]))
 end
 
-assert("KNN.hi") do
-  assert_equal("hi!!", KNN.hi)
+assert("KNN#score") do
+  knn = KNN.new(2, 1)
+  s = knn.score([1, 2, 10, 2, 1])
+  assert_equal(5, s.length)
+  assert_equal(0, s[0])
 end
