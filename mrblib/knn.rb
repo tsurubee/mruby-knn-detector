@@ -20,7 +20,7 @@ class KNN
       scores << s
     end
     # Adjust the size of input/output array
-    return Array.new(@w-1, 0) + scores
+    Array.new(@w-1, 0) + scores
   end
 
   def sliding_windows(data)
